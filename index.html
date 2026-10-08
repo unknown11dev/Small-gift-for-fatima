@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17131f">
+  <title>Small Gift for Fatima ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="sparkle">✦</div>
+      <p class="small-title">A LITTLE SOMETHING FOR MY</p>
+      <h1>Small Gift for Fatima <span>♡</span></h1>
+      <p class="intro">10 little reasons why I'm so lucky to have you.</p>
+
+      <button class="open-btn" id="openBtn">
+        <span>OPEN</span>
+        <span class="arrow">↓</span>
+      </button>
+
+      <div class="music-note">♪</div>
+      <p class="music-hint">Tap OPEN, then start the song</p>
+    </section>
+
+    <section class="reasons" id="reasons">
+      <div class="section-heading">
+        <p>JUST A FEW OF THE MANY...</p>
+        <h2>Reasons I Love You</h2>
+      </div>
+
+      <div class="cards">
+        <article class="reason-card">
+          <div class="reason-number">01</div>
+          <img src="photo1.jpeg" alt="Best friends">
+          <p>I love you because you always make even the simplest moments special.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">02</div>
+          <img src="photo2.jpeg" alt="Best friends">
+          <p>I love you because you always make me smile.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">03</div>
+          <img src="photo3.jpeg" alt="Best friends">
+          <p>I love you because you make every moment more fun.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">04</div>
+          <img src="photo4.jpeg" alt="Best friends">
+          <p>I love you because you always listen to me.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">05</div>
+          <img src="photo5.jpeg" alt="Best friends">
+          <p>I love you because I can trust you with everything.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">06</div>
+          <img src="photo6.jpeg" alt="Best friends">
+          <p>I love you because you’re always there for me.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">07</div>
+          <img src="photo7.jpeg" alt="Best friends">
+          <p>I love you because you understand me without me having to explain.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">08</div>
+          <img src="photo8.jpeg" alt="Best friends">
+          <p>I love you because you always make me laugh.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">09</div>
+          <img src="photo9.jpeg" alt="Best friends">
+          <p>I love you because you never judge me.</p>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-number">10</div>
+          <img src="photo10.jpeg" alt="Best friends">
+          <p>I love you because you make me feel safe.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ending">
+      <div class="heart">♡</div>
+      <h2>And these are only 10...</h2>
+      <p>There are a million more reasons, memories, laughs, and random moments I could put here.</p>
+      <p class="final-line">Forever my best friend. ✦</p>
+    </section>
+  </main>
+
+  <div class="music-player" id="musicPlayer">
+    <button id="musicBtn" aria-label="Play music">▶</button>
+    <div>
+      <strong>أنا ضهرك</strong>
+      <span>بهاء سلطان</span>
+    </div>
+    <audio id="audio" src="ana-dahrak.mp3" loop></audio>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById("openBtn");
+    const reasons = document.getElementById("reasons");
+    const musicBtn = document.getElementById("musicBtn");
+    const audio = document.getElementById("audio");
+
+    openBtn.addEventListener("click", () => {
+      reasons.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("musicPlayer").classList.add("show");
+    });
+
+    musicBtn.addEventListener("click", async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+          musicBtn.textContent = "❚❚";
+        } else {
+          audio.pause();
+          musicBtn.textContent = "▶";
+        }
+      } catch (e) {
+        alert("حطي ملف الأغنية باسم ana-dahrak.mp3 في نفس فولدر الموقع.");
+      }
+    });
+
+    const cards = document.querySelectorAll(".reason-card");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
